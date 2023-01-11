@@ -1,0 +1,38 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>YouTube Downloader</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        YouTube Video URL:
+        <input type="text" id="video-url" />
+      </label>
+      <br />
+      <button type="button" id="download-button" onclick="downloadVideo()">
+        Download
+      </button>
+    </form>
+
+    <script>
+      function downloadVideo() {
+        // Get the video URL from the input field
+        const videoUrl = document.getElementById("video-url").value;
+        
+        // Extract the video ID from the URL
+        const videoId = videoUrl.split("v=")[1];
+        
+        // Generate the download URL
+        const downloadUrl = `http://youtube.com/get_video?video_id=${videoId}`;
+        
+        // Create an anchor element and simulate a click on it to initiate the download
+        const downloadLink = document.createElement("a");
+        downloadLink.href = downloadUrl;
+        downloadLink.download = "video.mp4";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+      }
+    </script>
+  </body>
+</html>
